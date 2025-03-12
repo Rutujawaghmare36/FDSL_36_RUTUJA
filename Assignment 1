@@ -1,3 +1,4 @@
+// Structure of student information
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
