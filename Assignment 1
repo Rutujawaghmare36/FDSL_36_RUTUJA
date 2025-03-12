@@ -1,1 +1,131 @@
-
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+struct Student
+{
+int rollno;
+char name[15];
+};
+int main()
+{
+struct Student s1[3];
+int size,i,choice,ch,up,roll,no,flag=0,position,j;
+char newname[15];
+do
+{
+printf("\nMENU\n");
+printf("\n1. Enter student records");
+printf("\n2. Display the records");
+printf("\n3. Update student record");
+printf("\n4. Delete student record");
+printf("\n5. Insertion student record");
+printf("\n6. Exit");
+printf("\nEnter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+printf("\nEnter the total number of students:");
+scanf("%d",&size);
+printf("Enter records students:\n");
+for(i=0;i<size;i++)
+{
+printf("\nEnter roll no: ");
+scanf("%d",&s1[i].rollno);
+printf("\nEnter name: ");
+scanf("%s",&s1[i].name);
+}
+break;
+case 2:
+printf("\nStudent Information is as follows:\n");
+for(i=0;i<size;i++)
+{
+printf("\nRollno : %d\tName : %s\n",s1[i].rollno,s1[i].name);
+}
+break;
+case 3:
+printf("\nRecord Updation");
+printf("\nEnter the roll number whose information you want to change:");
+scanf("%d",&no);
+for(i=0;i<size;i++)
+{
+if(s1[i].rollno==no)
+{
+flag=1;
+printf("\nEnter the new roll number: ");
+scanf("%d",&roll);
+s1[i].rollno=roll;
+printf("\nEnter the new name: ");
+scanf("%s",&newname);
+strcpy(s1[i].name,newname);
+printf("\nRecord updated successfully!!");
+}
+}
+if(flag==0)
+printf("\nNo such rollno found");
+break;
+case 4:
+printf("\nEnter the roll number to be deleted: ");
+scanf("%d",&roll);
+for(i=0;i<size;i++)
+{
+if(s1[i].rollno==roll)
+{
+position=i;
+flag=1;
+break;
+}
+}
+if(position<0 || position>size)
+printf("\nElement not found");
+else
+{
+for(i=position;i<size-1;i++)
+{
+s1[i].rollno=s1[i+1].rollno;
+strcpy(s1[i].name,s1[i+1].name);
+}
+size--;
+printf("\nUpdated student record:");
+for(i=0;i<size;i++)
+printf("\n%d\t%s",s1[i].rollno,s1[i].name);
+}
+break;
+case 5:
+printf("\n Insertion of Record:");
+printf("\nEnter the Position where you want to insert record:");
+scanf("%d",&position);
+//if(position<0 || position>size)
+//printf("\nPosition out of range(Enter new position)");
+//else
+//{
+i=position;
+j=size;
+do
+{
+s1[j+1].rollno=s1[j].rollno;
+strcpy(s1[j+1].name,s1[j].name);
+j--;
+}while(position<=j);
+size++;
+printf("\nEnter the roll number: ");
+scanf("%d",&roll);
+s1[position].rollno=roll;
+printf("\nEnter the name: ");
+scanf("%s",&newname);
+strcpy(s1[position].name,newname);
+printf("\nUpdated student record:");
+for(i=0;i<size;i++)
+{
+printf("\n%d\t%s",s1[i].rollno,s1[i].name);
+}
+break;
+case 6:
+exit(0);
+break;
+}
+printf("\nDo you want to continue (1/0): ");
+scanf("%d",&ch);
+}while(ch!=0);
+return 0;
+}
