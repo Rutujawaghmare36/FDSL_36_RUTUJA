@@ -1,1 +1,55 @@
+#include<stdio.h>
+int main(){
+	int rear = -1;
+	int front = -1;
+	int max=5;
+	int queue[max];
+	int element,i,choice,new;
+	while(1){
+	printf("\nChoose which operation you want to perform :\n0.Exit\n1.enQueue\n2.deQueue\n3.display\n");
+	scanf("%d",&choice);
+	
+	switch(choice){
+		case 0:
+		return 0;
+			break;
+		
+		case 1:
+		if(rear==max-1){
+			printf("Queue is full\n");
+			break;
+		}
+		else{
+			printf("Enter the element to be inserted :");
+			scanf("%d",&element);
+			queue[rear]=element;
+			rear++;
+			printf("%d is inserted into the stack successfully!\n",element);
+		}
+			break;
+			
+		case 2:
+		if(front==rear){
+			printf("Queue is empty\n");
+			break;
+   		}
+		else{
+			front++;
+			printf("%d is deleted from stack successfully!\n",queue[front]);
+		}	
+			break;
+			
+		case 3:
+		printf("The stack elements are:");
+			for(i=0;i<max;i++){
+				printf("%d\t",queue[i]);
+				}
+			break;
+			
+		default:
+		printf("Please, enter a valid choice :\n");
+	}
+}		return 0;
+}
+
 
