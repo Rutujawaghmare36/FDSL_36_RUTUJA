@@ -1,1 +1,57 @@
 
+#include<stdio.h>
+int main(){
+	int top=-1,i;
+	int choice;
+	int element;
+	int n=5;
+	int a[n];
+	
+	while(1){
+	printf("\nChoose which operation you want to perform :\n0.Exit\n1.Push\n2.pop\n3.display\n");
+	scanf("%d",&choice);
+	
+	switch(choice){
+		case 0:
+		return 0;
+			break;
+		
+		case 1:
+		if(top==n-1){
+			printf("Stack is full\n");
+			break;
+		}
+		else{
+			printf("Enter the stack element you want to push/insert :\n");
+			scanf("%d",&element);
+			top++;
+			a[top]=element;
+			printf("%d is pushed into the stack successfully!\n",element);
+		}
+			break;
+			
+		case 2:
+		if(top==-1){
+			printf("Stack is empty\n");
+			break;
+		}
+		else{
+			printf("%d is popped from stack\n",a[top]);
+			top--;
+			printf("%d is popped out of the stack successfully!\n",element);
+		}	
+			break;
+			
+		case 3:
+		printf("The stack elements are:");
+			for(i=top;i>=0;i--){
+				printf("%d\t",a[i]);
+				}
+			break;
+			
+		default:
+		printf("Please, enter a valid choice :\n");
+		}
+	}
+}		
+
