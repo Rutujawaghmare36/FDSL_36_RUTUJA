@@ -1,4 +1,4 @@
-
+// Stack
 #include<stdio.h>
 int main(){
 	int top=-1,i;
